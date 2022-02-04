@@ -4,17 +4,32 @@ import { useState, useEffect } from "react";
 
 function App() {
   const [counter, setCounter] = useState(0);
+  const [keyword, setKeyword] = useState("");
+
   const onClick = () => setCounter((prev) => prev+1);
-  console.log("i run all the time.");
-  // const iRunOnlyOnce = () => {
-  //   console.log("i run only once.")
-  // };
-  // useEffect(iRunOnlyOnce, []);
+  const onChange = (event) => setKeyword(event.target.value);
+
   useEffect(()=>{
-    console.log("i run only once.");
+    console.log("run once.");
   }, []);
+
+  useEffect(()=>{
+    console.log("change counter.");
+  }, [counter]);
+
+  useEffect(()=>{
+    if(keyword !== ""){
+      console.log("change keyword.");
+    }
+  }, [keyword]); 
+
+  useEffect(()=>{
+      console.log("both change.");
+  }, [counter, keyword]);   
+   
   return (
     <div>
+      <input type="text" placeholder="Search..." value={keyword} onChange={onChange}/>
       <h1 className={styles.title}>{counter}</h1>
       <button onClick={onClick}>Click me</button>
     </div>
