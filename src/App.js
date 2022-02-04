@@ -54,9 +54,9 @@ function App() {
             ))}
           </select>
           </div>
-          <label>$</label><input type="text" placeholder="your money..." value={money} onChange={onChangeMoney}/>
+          <label>I have $</label><input type="text" placeholder="your money..." value={money} onChange={onChangeMoney}/>.
           <hr/>
-          {buyCoin}
+          I can buy {buyCoin} coins.
         </div>
         
       )}
